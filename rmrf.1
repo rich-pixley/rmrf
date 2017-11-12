@@ -1,0 +1,56 @@
+.TH RMRF 1 "11 November 2017"
+.SH Name
+rmrf \- "rm -rf" with a high degree of concurrency
+.SH SYNOPSIS
+.B "rmrf"
+[
+.B -v
+] [
+.B -q
+.I queuesize
+] [
+.B -n
+.I concurrencycount
+] [ files ]
+.SH DESCRIPTION
+.LP
+.I Rmrf
+is a highly concurrent replacement for "rm -rf". Where "rm" is single
+threaded and can easily take many times as long as it took to create a
+large directory tree,
+.I rmrf
+can remove much faster.
+.SH "EXIT STATUS"
+.I Rmrf
+returns zero exit status on correct completion.  If there were any
+errors, it returns non-zero exit status.
+.SH "SEE ALSO"
+rm(1)
+.SH BUGS
+.LP
+.I Rmrf
+has several arbitrary limits.  Some of these limits will result in
+failures, including potential deadlocks.  You can play with the
+command line options \- often, increasing the queue size will work
+around the issue.  Sadly, dynamic tuning of these values is beyond the
+scope of this work.
+.SH AUTHOR
+K Richard Pixley <rich@noir.com>
+.SH "COPYRIGHT"
+Copyright 2017 K Richard Pixley
+.LP
+This file is part of
+.IR rmr .
+.LP
+Rmr is free software; you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free Software
+Foundation; either version 3 of the License, or (at your option) any later
+version.
+.LP
+Rmr is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+.LP
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see
+.IR http://www.gnu.org/licenses/ .
