@@ -1,25 +1,25 @@
 # Copyright © 2017 K Richard Pixley
 
-all: rmr
+all: rmrf
 
-rmr: rmr.go
-	go build rmr
+rmrf: rmrf.go
+	go build rmrf
 
-check: rmr
-	./rmr_test.sh ./rmr
+check: rmrf
+	./rmrf_test.sh ./rmrf
 
 install:
-	$(INSTALL) -m 0755 ./rmr $(INSTALLDIR)
+	$(INSTALL) -m 0755 ./rmrf $(INSTALLDIR)
 
-all-gccgo: rmr-gccgo
+all-gccgo: rmrf-gccgo
 
-rmr-gccgo: rmr.go
+rmrf-gccgo: rmrf.go
 	gccgo -Wall -O2 -g -o $@ $<
 
-check-gccgo: rmr-gccgo
-	./rmr_test.sh ./rmr-gccgo
+check-gccgo: rmrf-gccgo
+	./rmrf_test.sh ./rmrf-gccgo
 
-TAGS: rmr.go
-	etags rmr.go
+TAGS: rmrf.go
+	etags rmrf.go
 
-clean: ; rm -rf rmr *~ TAGS foo bar baz
+clean: ; rm -rf rmrf *~ TAGS foo bar baz
